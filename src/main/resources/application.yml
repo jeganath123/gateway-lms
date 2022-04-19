@@ -1,0 +1,18 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: cloudgateway
+  cloud:
+    gateway:
+      routes:
+        - id: course
+          uri: lb://COURSESERVICE
+          predicates:
+          - Path=/api/course/**
+        - id: student
+          uri: lb://STUDENTSERVICE
+          predicates:
+          - Path=/api/student/**
+
+
